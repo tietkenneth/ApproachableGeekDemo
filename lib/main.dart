@@ -142,10 +142,13 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             //mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              const Text(
-                'Edit Profile',
-              ),
-              Text("Insert profile picture here"),
+              const Text('Edit Profile',
+                  style: TextStyle(
+                    fontSize: 25.0,
+                  )),
+              SizedBox(height: 25.0),
+              Text("[profile picture here]"),
+              SizedBox(height: 25.0),
               ElevatedButton(
                 onPressed: () {
                   // Set initial values for controllers
@@ -240,6 +243,7 @@ class NamePage extends StatelessWidget {
             TextField(
                 controller: lastNameController,
                 decoration: InputDecoration(labelText: 'Last Name')),
+            SizedBox(height: 15),
             ElevatedButton(
               onPressed: () {
                 String firstName = firstNameController.text;
@@ -277,6 +281,7 @@ class PhonePage extends StatelessWidget {
             TextField(
                 controller: phoneNumberController,
                 decoration: InputDecoration(labelText: 'Phone Number')),
+            SizedBox(height: 15.0),
             ElevatedButton(
               onPressed: () {
                 String phoneNumber = phoneNumberController.text;
@@ -310,6 +315,7 @@ class EmailPage extends StatelessWidget {
             TextField(
                 controller: emailController,
                 decoration: InputDecoration(labelText: 'Email')),
+            SizedBox(height: 15.0),
             ElevatedButton(
               onPressed: () {
                 String email = emailController.text;
@@ -345,6 +351,7 @@ class DescriptionPage extends StatelessWidget {
                 controller: descriptionController,
                 decoration: InputDecoration(
                     labelText: 'Write a little bit about yourself')),
+            SizedBox(height: 15.0),
             ElevatedButton(
               onPressed: () {
                 String description = descriptionController.text;
