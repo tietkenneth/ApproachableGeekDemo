@@ -13,40 +13,87 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: "Approachable Geek Demo Profile Page"),
     );
   }
 }
 
+class UserProfile {
+  String firstName;
+  String lastName;
+  String phoneNumber;
+  String email;
+  String description;
+
+  UserProfile({
+    required this.firstName,
+    required this.lastName,
+    required this.phoneNumber,
+    required this.email,
+    required this.description,
+  });
+
+  UserProfile.updateName({
+    required String firstName,
+    required String lastName,
+    String? phoneNumber,
+    String? email,
+    String? description,
+  }) : this(
+          firstName: firstName,
+          lastName: lastName,
+          phoneNumber: phoneNumber ?? "",
+          email: email ?? "",
+          description: description ?? "",
+        );
+
+  UserProfile.updatePhoneNumber({
+    String? firstName,
+    String? lastName,
+    required String phoneNumber,
+    String? email,
+    String? description,
+  }) : this(
+          firstName: firstName ?? "",
+          lastName: lastName ?? "",
+          phoneNumber: phoneNumber,
+          email: email ?? "",
+          description: description ?? "",
+        );
+
+  UserProfile.updateEmail({
+    String? firstName,
+    String? lastName,
+    String? phoneNumber,
+    required String email,
+    String? description,
+  }) : this(
+          firstName: firstName ?? "",
+          lastName: lastName ?? "",
+          phoneNumber: phoneNumber ?? "",
+          email: email,
+          description: description ?? "",
+        );
+  UserProfile.updateDescription({
+    String? firstName,
+    String? lastName,
+    String? phoneNumber,
+    String? email,
+    required String description,
+  }) : this(
+          firstName: firstName ?? "",
+          lastName: lastName ?? "",
+          phoneNumber: phoneNumber ?? "",
+          email: email ?? "",
+          description: description,
+        );
+}
+
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
 
   final String title;
 
@@ -55,71 +102,262 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  TextEditingController firstNameController = TextEditingController();
+  TextEditingController lastNameController = TextEditingController();
+  TextEditingController phoneNumberController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController descriptionController = TextEditingController();
 
-  void _incrementCounter() {
+  UserProfile userProfile = UserProfile(
+      firstName: "", lastName: "", phoneNumber: "", email: "", description: "");
+
+  void updateProfile(UserProfile updatedProfile) {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
+      userProfile = UserProfile(
+        firstName: updatedProfile.firstName.isNotEmpty
+            ? updatedProfile.firstName
+            : userProfile.firstName,
+        lastName: updatedProfile.lastName.isNotEmpty
+            ? updatedProfile.lastName
+            : userProfile.lastName,
+        phoneNumber: updatedProfile.phoneNumber.isNotEmpty
+            ? updatedProfile.phoneNumber
+            : userProfile.phoneNumber,
+        email: updatedProfile.email.isNotEmpty
+            ? updatedProfile.email
+            : userProfile.email,
+        description: updatedProfile.description.isNotEmpty
+            ? updatedProfile.description
+            : userProfile.description,
+      );
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
+    return LayoutBuilder(builder: (context, constraints) {
+      return Scaffold(
+        appBar: AppBar(),
+        body: Center(
+          child: Column(
+            //mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              const Text(
+                'Edit Profile',
+              ),
+              Text("Insert profile picture here"),
+              ElevatedButton(
+                onPressed: () {
+                  // Set initial values for controllers
+                  firstNameController.text = userProfile.firstName;
+                  lastNameController.text = userProfile.lastName;
+
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => NamePage(
+                        onUpdate: updateProfile,
+                        firstNameController: firstNameController,
+                        lastNameController: lastNameController,
+                      ),
+                    ),
+                  );
+                },
+                child: Text(
+                    'Name: ${userProfile.firstName} ${userProfile.lastName}'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  // Navigate to the second page when the button is pressed.
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => PhonePage(
+                              onUpdate: updateProfile,
+                              phoneNumberController: phoneNumberController,
+                            )),
+                  );
+                },
+                child: Text('Phone: ${userProfile.phoneNumber}'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  // Navigate to the second page when the button is pressed.
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => EmailPage(
+                              onUpdate: updateProfile,
+                              emailController: emailController,
+                            )),
+                  );
+                },
+                child: Text('Email: ${userProfile.email}'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  // Navigate to the second page when the button is pressed.
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => DescriptionPage(
+                            onUpdate: updateProfile,
+                            descriptionController: descriptionController)),
+                  );
+                },
+                child:
+                    Text('Tell Us About Yourself: ${userProfile.description}'),
+              ),
+            ],
+          ),
+        ),
+      );
+    });
+  }
+}
+
+class NamePage extends StatelessWidget {
+  final Function(UserProfile) onUpdate;
+  final TextEditingController firstNameController;
+  final TextEditingController lastNameController;
+
+  NamePage(
+      {required this.onUpdate,
+      required this.firstNameController,
+      required this.lastNameController});
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
+      appBar: AppBar(),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+          children: [
+            Text("What's your name?"),
+            TextField(
+                controller: firstNameController,
+                decoration: InputDecoration(labelText: 'First Name')),
+            TextField(
+                controller: lastNameController,
+                decoration: InputDecoration(labelText: 'Last Name')),
+            ElevatedButton(
+              onPressed: () {
+                String firstName = firstNameController.text;
+                String lastName = lastNameController.text;
+                UserProfile userProfile = UserProfile.updateName(
+                  firstName: firstName,
+                  lastName: lastName,
+                );
+                onUpdate(userProfile);
+                Navigator.pop(context);
+              },
+              child: Text("Update"),
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+
+class PhonePage extends StatelessWidget {
+  final Function(UserProfile) onUpdate;
+  final TextEditingController phoneNumberController;
+
+  PhonePage({required this.onUpdate, required this.phoneNumberController});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      body: Center(
+        child: Column(
+          children: [
+            Text("What's your phone number?"),
+            TextField(
+                controller: phoneNumberController,
+                decoration: InputDecoration(labelText: 'Phone Number')),
+            ElevatedButton(
+              onPressed: () {
+                String phoneNumber = phoneNumberController.text;
+                UserProfile userProfile =
+                    UserProfile.updatePhoneNumber(phoneNumber: phoneNumber);
+                onUpdate(userProfile);
+                Navigator.pop(context);
+              },
+              child: Text("Update"),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class EmailPage extends StatelessWidget {
+  final Function(UserProfile) onUpdate;
+  final TextEditingController emailController;
+  EmailPage({required this.onUpdate, required this.emailController});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      body: Center(
+        child: Column(
+          children: [
+            Text("What's your email?"),
+            TextField(
+                controller: emailController,
+                decoration: InputDecoration(labelText: 'Email')),
+            ElevatedButton(
+              onPressed: () {
+                String email = emailController.text;
+                UserProfile userProfile = UserProfile.updateEmail(email: email);
+                onUpdate(userProfile);
+                Navigator.pop(context);
+              },
+              child: Text("Update"),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class DescriptionPage extends StatelessWidget {
+  final Function(UserProfile) onUpdate;
+  final TextEditingController descriptionController;
+
+  DescriptionPage(
+      {required this.onUpdate, required this.descriptionController});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      body: Center(
+        child: Column(
+          children: [
+            Text("What type of passenger are you?"),
+            TextField(
+                controller: descriptionController,
+                decoration: InputDecoration(
+                    labelText: 'Write a little bit about yourself')),
+            ElevatedButton(
+              onPressed: () {
+                String description = descriptionController.text;
+                UserProfile userProfile =
+                    UserProfile.updateDescription(description: description);
+                onUpdate(userProfile);
+                Navigator.pop(context);
+              },
+              child: Text("Update"),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
