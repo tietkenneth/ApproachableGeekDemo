@@ -104,6 +104,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   TextEditingController firstNameController = TextEditingController();
   TextEditingController lastNameController = TextEditingController();
+  TextEditingController fullNameController = TextEditingController();
   TextEditingController phoneNumberController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
@@ -149,29 +150,34 @@ class _MyHomePageState extends State<MyHomePage> {
               SizedBox(height: 25.0),
               Text("[profile picture here]"),
               SizedBox(height: 25.0),
-              ElevatedButton(
-                onPressed: () {
-                  // Set initial values for controllers
-                  firstNameController.text = userProfile.firstName;
-                  lastNameController.text = userProfile.lastName;
+              TextFormField(
+                  controller: firstNameController,
+                  readOnly: true,
+                  decoration: InputDecoration(
+                    labelText: "Name",
+                  ),
+                  onTap: () {
+                    //firstNameController.text = userProfile.firstName;
+                    //lastNameController.text = userProfile.lastName;
 
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => NamePage(
-                        onUpdate: updateProfile,
-                        firstNameController: firstNameController,
-                        lastNameController: lastNameController,
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => NamePage(
+                          onUpdate: updateProfile,
+                          firstNameController: firstNameController,
+                          lastNameController: lastNameController,
+                        ),
                       ),
-                    ),
-                  );
-                },
-                child: Text(
-                    'Name: ${userProfile.firstName} ${userProfile.lastName}'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  // Navigate to the second page when the button is pressed.
+                    );
+                  }),
+              TextFormField(
+                controller: phoneNumberController,
+                readOnly: true,
+                decoration: InputDecoration(
+                  labelText: "Phone",
+                ),
+                onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -181,41 +187,53 @@ class _MyHomePageState extends State<MyHomePage> {
                             )),
                   );
                 },
-                child: Text('Phone: ${userProfile.phoneNumber}'),
               ),
-              ElevatedButton(
-                onPressed: () {
-                  // Navigate to the second page when the button is pressed.
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => EmailPage(
+              TextFormField(
+                  controller: emailController,
+                  readOnly: true,
+                  decoration: InputDecoration(
+                    labelText: "Email",
+                  ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => EmailPage(
+                                onUpdate: updateProfile,
+                                emailController: emailController,
+                              )),
+                    );
+                  }),
+              TextFormField(
+                  controller: descriptionController,
+                  readOnly: true,
+                  decoration:
+                      InputDecoration(labelText: "Tell Us About Yourself"),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => DescriptionPage(
                               onUpdate: updateProfile,
-                              emailController: emailController,
-                            )),
-                  );
-                },
-                child: Text('Email: ${userProfile.email}'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  // Navigate to the second page when the button is pressed.
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => DescriptionPage(
-                            onUpdate: updateProfile,
-                            descriptionController: descriptionController)),
-                  );
-                },
-                child:
-                    Text('Tell Us About Yourself: ${userProfile.description}'),
-              ),
+                              descriptionController: descriptionController)),
+                    );
+                  }),
             ],
           ),
         ),
       );
     });
+  }
+
+  void updateFullName() {
+    String firstName = firstNameController.text;
+    String lastName = lastNameController.text;
+
+    // Concatenate the first name and last name
+    String fullName = '$firstName $lastName';
+
+    // Set the concatenated full name to the third TextFormField
+    fullNameController.text = fullName;
   }
 }
 
