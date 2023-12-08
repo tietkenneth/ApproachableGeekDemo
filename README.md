@@ -1,18 +1,41 @@
-# approachablegeek_demo
+# ApproachableGeek Demo
 
-Adjusting readme.
+This Flutter project was developed on MacOS and tested for MacOS (Desktop app) and iOS.
 
-A new Flutter project.
+![Screenshot 2023-12-04 at 2 52 06 PM](https://github.com/tietkenneth/ApproachableGeekDemo/assets/65835355/c99ea6eb-1964-4a68-ab04-4506afa0ab03)
+
+## Time Invested
+
+- **Learning Flutter:**
+  - 5 hours: Learning Flutter by reading documentation & Completion of "Write your first Flutter App"
+
+- **Mobile Application Demo:**
+  - 4.5 hours for design, implementation, testing, and documentation
+ 
+## Prerequisites for Testing (iOS)
+
+Before running the application on iOS, make sure you have Xcode installed.
+
+- Install [Xcode](https://developer.apple.com/xcode/)
+
+If the desktop application is also desired, then Flutter must be installed.
+- Install [Flutter](https://docs.flutter.dev/get-started/install)
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+1. **Clone the repository:**
+    ```bash
+    git clone https://github.com/your-username/approachablegeek_demo.git
+    ```
+2. **Running the application**
+   ```
+   Navigate to the approachablegeek_demo, open the project, and run the application!
+   ```
+3. **Open Xcodes, navigate to the project, and run the simulator**
 
-A few resources to get you started if this is your first Flutter project:
+4. **Enjoy the app!**
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## To-Do
+- Improve UI
+- Implement profile page
+- Fields not reflecting change when cleared.
