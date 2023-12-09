@@ -281,6 +281,11 @@ class NamePage extends StatelessWidget {
             const SizedBox(height: 15),
             ElevatedButton(
               style: ButtonStyle(
+                  shape: MaterialStateProperty.all<OutlinedBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(0.0),
+                    ),
+                  ),
                   backgroundColor:
                       MaterialStateProperty.all<Color>(Colors.black),
                   foregroundColor:
@@ -327,6 +332,11 @@ class PhonePage extends StatelessWidget {
             SizedBox(height: 15.0),
             ElevatedButton(
               style: ButtonStyle(
+                  shape: MaterialStateProperty.all<OutlinedBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(0.0),
+                    ),
+                  ),
                   backgroundColor:
                       MaterialStateProperty.all<Color>(Colors.black),
                   foregroundColor:
@@ -369,6 +379,11 @@ class EmailPage extends StatelessWidget {
             SizedBox(height: 15.0),
             ElevatedButton(
               style: ButtonStyle(
+                  shape: MaterialStateProperty.all<OutlinedBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(0.0),
+                    ),
+                  ),
                   backgroundColor:
                       MaterialStateProperty.all<Color>(Colors.black),
                   foregroundColor:
@@ -412,6 +427,11 @@ class DescriptionPage extends StatelessWidget {
             SizedBox(height: 15.0),
             ElevatedButton(
               style: ButtonStyle(
+                  shape: MaterialStateProperty.all<OutlinedBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(0.0),
+                    ),
+                  ),
                   backgroundColor:
                       MaterialStateProperty.all<Color>(Colors.black),
                   foregroundColor:
