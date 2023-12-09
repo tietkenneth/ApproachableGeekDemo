@@ -255,8 +255,8 @@ class NamePage extends StatelessWidget {
         child: Column(
           //crossAxisAlignment: CrossAxisAlignment.start, // Align text to the start (left)
           children: [
-            Text("What's your name?"),
-            SizedBox(
+            const Text("What's your name?"),
+            const SizedBox(
               height: 10.0,
             ),
             Row(
@@ -264,22 +264,27 @@ class NamePage extends StatelessWidget {
                 Expanded(
                     child: TextField(
                         controller: firstNameController,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           labelText: 'First Name',
                           border: OutlineInputBorder(),
                         ))),
-                SizedBox(width: 10.0),
+                const SizedBox(width: 10.0),
                 Expanded(
                     child: TextField(
                         controller: lastNameController,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           labelText: 'Last Name',
                           border: OutlineInputBorder(),
                         ))),
               ],
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             ElevatedButton(
+              style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.black),
+                  foregroundColor:
+                      MaterialStateProperty.all<Color>(Colors.white)),
               onPressed: () {
                 String firstName = firstNameController.text;
                 String lastName = lastNameController.text;
@@ -321,6 +326,11 @@ class PhonePage extends StatelessWidget {
                 )),
             SizedBox(height: 15.0),
             ElevatedButton(
+              style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.black),
+                  foregroundColor:
+                      MaterialStateProperty.all<Color>(Colors.white)),
               onPressed: () {
                 String phoneNumber = phoneNumberController.text;
                 UserProfile userProfile =
@@ -358,6 +368,11 @@ class EmailPage extends StatelessWidget {
                 )),
             SizedBox(height: 15.0),
             ElevatedButton(
+              style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.black),
+                  foregroundColor:
+                      MaterialStateProperty.all<Color>(Colors.white)),
               onPressed: () {
                 String email = emailController.text;
                 UserProfile userProfile = UserProfile.updateEmail(email: email);
@@ -396,6 +411,11 @@ class DescriptionPage extends StatelessWidget {
                 )),
             SizedBox(height: 15.0),
             ElevatedButton(
+              style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.black),
+                  foregroundColor:
+                      MaterialStateProperty.all<Color>(Colors.white)),
               onPressed: () {
                 String description = descriptionController.text;
                 UserProfile userProfile =
