@@ -255,7 +255,8 @@ class NamePage extends StatelessWidget {
         child: Column(
           //crossAxisAlignment: CrossAxisAlignment.start, // Align text to the start (left)
           children: [
-            const Text("What's your name?"),
+            const Text("What's your name?",
+                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold)),
             const SizedBox(
               height: 10.0,
             ),
@@ -322,7 +323,8 @@ class PhonePage extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            Text("What's your phone number?"),
+            Text("What's your phone number?",
+                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold)),
             TextField(
                 controller: phoneNumberController,
                 decoration: InputDecoration(
@@ -369,7 +371,8 @@ class EmailPage extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            Text("What's your email?"),
+            Text("What's your email?",
+                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold)),
             TextField(
                 controller: emailController,
                 decoration: InputDecoration(
@@ -417,7 +420,8 @@ class DescriptionPage extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            Text("What type of passenger are you?"),
+            Text("What type of passenger are you?",
+                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold)),
             TextField(
                 controller: descriptionController,
                 decoration: InputDecoration(
