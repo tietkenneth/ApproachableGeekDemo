@@ -315,7 +315,10 @@ class PhonePage extends StatelessWidget {
             Text("What's your phone number?"),
             TextField(
                 controller: phoneNumberController,
-                decoration: InputDecoration(labelText: 'Your Phone Number')),
+                decoration: InputDecoration(
+                  labelText: 'Your Phone Number',
+                  border: OutlineInputBorder(),
+                )),
             SizedBox(height: 15.0),
             ElevatedButton(
               onPressed: () {
@@ -349,7 +352,10 @@ class EmailPage extends StatelessWidget {
             Text("What's your email?"),
             TextField(
                 controller: emailController,
-                decoration: InputDecoration(labelText: 'Your email address')),
+                decoration: InputDecoration(
+                  labelText: 'Your email address',
+                  border: OutlineInputBorder(),
+                )),
             SizedBox(height: 15.0),
             ElevatedButton(
               onPressed: () {
@@ -385,7 +391,9 @@ class DescriptionPage extends StatelessWidget {
             TextField(
                 controller: descriptionController,
                 decoration: InputDecoration(
-                    labelText: 'Write a little bit about yourself')),
+                  labelText: 'Write a little bit about yourself',
+                  border: OutlineInputBorder(),
+                )),
             SizedBox(height: 15.0),
             ElevatedButton(
               onPressed: () {
