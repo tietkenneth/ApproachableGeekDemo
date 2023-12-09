@@ -253,14 +253,31 @@ class NamePage extends StatelessWidget {
       appBar: AppBar(),
       body: Center(
         child: Column(
+          //crossAxisAlignment: CrossAxisAlignment.start, // Align text to the start (left)
           children: [
             Text("What's your name?"),
-            TextField(
-                controller: firstNameController,
-                decoration: InputDecoration(labelText: 'First Name')),
-            TextField(
-                controller: lastNameController,
-                decoration: InputDecoration(labelText: 'Last Name')),
+            SizedBox(
+              height: 10.0,
+            ),
+            Row(
+              children: [
+                Expanded(
+                    child: TextField(
+                        controller: firstNameController,
+                        decoration: InputDecoration(
+                          labelText: 'First Name',
+                          border: OutlineInputBorder(),
+                        ))),
+                SizedBox(width: 10.0),
+                Expanded(
+                    child: TextField(
+                        controller: lastNameController,
+                        decoration: InputDecoration(
+                          labelText: 'Last Name',
+                          border: OutlineInputBorder(),
+                        ))),
+              ],
+            ),
             SizedBox(height: 15),
             ElevatedButton(
               onPressed: () {
@@ -298,7 +315,7 @@ class PhonePage extends StatelessWidget {
             Text("What's your phone number?"),
             TextField(
                 controller: phoneNumberController,
-                decoration: InputDecoration(labelText: 'Phone Number')),
+                decoration: InputDecoration(labelText: 'Your Phone Number')),
             SizedBox(height: 15.0),
             ElevatedButton(
               onPressed: () {
@@ -332,7 +349,7 @@ class EmailPage extends StatelessWidget {
             Text("What's your email?"),
             TextField(
                 controller: emailController,
-                decoration: InputDecoration(labelText: 'Email')),
+                decoration: InputDecoration(labelText: 'Your email address')),
             SizedBox(height: 15.0),
             ElevatedButton(
               onPressed: () {
