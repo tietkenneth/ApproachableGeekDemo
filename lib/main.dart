@@ -139,86 +139,89 @@ class _MyHomePageState extends State<MyHomePage> {
     return LayoutBuilder(builder: (context, constraints) {
       return Scaffold(
         appBar: AppBar(),
-        body: Center(
-          child: Column(
-            //mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const Text('Edit Profile',
-                  style: TextStyle(
-                    fontSize: 25.0,
-                  )),
-              SizedBox(height: 25.0),
-              Text("[profile picture here]"),
-              SizedBox(height: 25.0),
-              TextFormField(
-                  controller: firstNameController,
-                  readOnly: true,
-                  decoration: InputDecoration(
-                    labelText: "Name",
-                  ),
-                  onTap: () {
-                    //firstNameController.text = userProfile.firstName;
-                    //lastNameController.text = userProfile.lastName;
+        body: Padding(
+          padding: const EdgeInsets.all(30.0),
+          child: Center(
+            child: Column(
+              //mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                const Text('Edit Profile',
+                    style: TextStyle(
+                      fontSize: 25.0,
+                    )),
+                SizedBox(height: 25.0),
+                Text("[profile picture here]"),
+                SizedBox(height: 25.0),
+                TextFormField(
+                    controller: firstNameController,
+                    readOnly: true,
+                    decoration: InputDecoration(
+                      labelText: "Name",
+                    ),
+                    onTap: () {
+                      //firstNameController.text = userProfile.firstName;
+                      //lastNameController.text = userProfile.lastName;
 
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => NamePage(
-                          onUpdate: updateProfile,
-                          firstNameController: firstNameController,
-                          lastNameController: lastNameController,
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => NamePage(
+                            onUpdate: updateProfile,
+                            firstNameController: firstNameController,
+                            lastNameController: lastNameController,
+                          ),
                         ),
-                      ),
-                    );
-                  }),
-              TextFormField(
-                controller: phoneNumberController,
-                readOnly: true,
-                decoration: InputDecoration(
-                  labelText: "Phone",
-                ),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => PhonePage(
-                              onUpdate: updateProfile,
-                              phoneNumberController: phoneNumberController,
-                            )),
-                  );
-                },
-              ),
-              TextFormField(
-                  controller: emailController,
+                      );
+                    }),
+                TextFormField(
+                  controller: phoneNumberController,
                   readOnly: true,
                   decoration: InputDecoration(
-                    labelText: "Email",
+                    labelText: "Phone",
                   ),
                   onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => EmailPage(
+                          builder: (context) => PhonePage(
                                 onUpdate: updateProfile,
-                                emailController: emailController,
+                                phoneNumberController: phoneNumberController,
                               )),
                     );
-                  }),
-              TextFormField(
-                  controller: descriptionController,
-                  readOnly: true,
-                  decoration:
-                      InputDecoration(labelText: "Tell Us About Yourself"),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => DescriptionPage(
-                              onUpdate: updateProfile,
-                              descriptionController: descriptionController)),
-                    );
-                  }),
-            ],
+                  },
+                ),
+                TextFormField(
+                    controller: emailController,
+                    readOnly: true,
+                    decoration: InputDecoration(
+                      labelText: "Email",
+                    ),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => EmailPage(
+                                  onUpdate: updateProfile,
+                                  emailController: emailController,
+                                )),
+                      );
+                    }),
+                TextFormField(
+                    controller: descriptionController,
+                    readOnly: true,
+                    decoration:
+                        InputDecoration(labelText: "Tell Us About Yourself"),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => DescriptionPage(
+                                onUpdate: updateProfile,
+                                descriptionController: descriptionController)),
+                      );
+                    }),
+              ],
+            ),
           ),
         ),
       );
@@ -251,59 +254,63 @@ class NamePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Center(
-        child: Column(
-          //crossAxisAlignment: CrossAxisAlignment.start, // Align text to the start (left)
-          children: [
-            const Text("What's your name?",
-                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold)),
-            const SizedBox(
-              height: 10.0,
-            ),
-            Row(
-              children: [
-                Expanded(
-                    child: TextField(
-                        controller: firstNameController,
-                        decoration: const InputDecoration(
-                          labelText: 'First Name',
-                          border: OutlineInputBorder(),
-                        ))),
-                const SizedBox(width: 10.0),
-                Expanded(
-                    child: TextField(
-                        controller: lastNameController,
-                        decoration: const InputDecoration(
-                          labelText: 'Last Name',
-                          border: OutlineInputBorder(),
-                        ))),
-              ],
-            ),
-            const SizedBox(height: 15),
-            ElevatedButton(
-              style: ButtonStyle(
-                  shape: MaterialStateProperty.all<OutlinedBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(0.0),
+      body: Padding(
+        padding: const EdgeInsets.all(30.0),
+        child: Center(
+          child: Column(
+            //crossAxisAlignment: CrossAxisAlignment.start, // Align text to the start (left)
+            children: [
+              const Text("What's your name?",
+                  style:
+                      TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold)),
+              const SizedBox(
+                height: 10.0,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                      child: TextField(
+                          controller: firstNameController,
+                          decoration: const InputDecoration(
+                            labelText: 'First Name',
+                            border: OutlineInputBorder(),
+                          ))),
+                  const SizedBox(width: 10.0),
+                  Expanded(
+                      child: TextField(
+                          controller: lastNameController,
+                          decoration: const InputDecoration(
+                            labelText: 'Last Name',
+                            border: OutlineInputBorder(),
+                          ))),
+                ],
+              ),
+              const SizedBox(height: 15),
+              ElevatedButton(
+                style: ButtonStyle(
+                    shape: MaterialStateProperty.all<OutlinedBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(0.0),
+                      ),
                     ),
-                  ),
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.black),
-                  foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.white)),
-              onPressed: () {
-                String firstName = firstNameController.text;
-                String lastName = lastNameController.text;
-                UserProfile userProfile = UserProfile.updateName(
-                  firstName: firstName,
-                  lastName: lastName,
-                );
-                onUpdate(userProfile);
-                Navigator.pop(context);
-              },
-              child: Text("Update"),
-            ),
-          ],
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(Colors.black),
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.white)),
+                onPressed: () {
+                  String firstName = firstNameController.text;
+                  String lastName = lastNameController.text;
+                  UserProfile userProfile = UserProfile.updateName(
+                    firstName: firstName,
+                    lastName: lastName,
+                  );
+                  onUpdate(userProfile);
+                  Navigator.pop(context);
+                },
+                child: Text("Update"),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -320,39 +327,43 @@ class PhonePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Center(
-        child: Column(
-          children: [
-            Text("What's your phone number?",
-                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold)),
-            TextField(
-                controller: phoneNumberController,
-                decoration: InputDecoration(
-                  labelText: 'Your Phone Number',
-                  border: OutlineInputBorder(),
-                )),
-            SizedBox(height: 15.0),
-            ElevatedButton(
-              style: ButtonStyle(
-                  shape: MaterialStateProperty.all<OutlinedBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(0.0),
+      body: Padding(
+        padding: const EdgeInsets.all(30.0),
+        child: Center(
+          child: Column(
+            children: [
+              Text("What's your phone number?",
+                  style:
+                      TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold)),
+              TextField(
+                  controller: phoneNumberController,
+                  decoration: InputDecoration(
+                    labelText: 'Your Phone Number',
+                    border: OutlineInputBorder(),
+                  )),
+              SizedBox(height: 15.0),
+              ElevatedButton(
+                style: ButtonStyle(
+                    shape: MaterialStateProperty.all<OutlinedBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(0.0),
+                      ),
                     ),
-                  ),
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.black),
-                  foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.white)),
-              onPressed: () {
-                String phoneNumber = phoneNumberController.text;
-                UserProfile userProfile =
-                    UserProfile.updatePhoneNumber(phoneNumber: phoneNumber);
-                onUpdate(userProfile);
-                Navigator.pop(context);
-              },
-              child: Text("Update"),
-            ),
-          ],
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(Colors.black),
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.white)),
+                onPressed: () {
+                  String phoneNumber = phoneNumberController.text;
+                  UserProfile userProfile =
+                      UserProfile.updatePhoneNumber(phoneNumber: phoneNumber);
+                  onUpdate(userProfile);
+                  Navigator.pop(context);
+                },
+                child: Text("Update"),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -368,38 +379,43 @@ class EmailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Center(
-        child: Column(
-          children: [
-            Text("What's your email?",
-                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold)),
-            TextField(
-                controller: emailController,
-                decoration: InputDecoration(
-                  labelText: 'Your email address',
-                  border: OutlineInputBorder(),
-                )),
-            SizedBox(height: 15.0),
-            ElevatedButton(
-              style: ButtonStyle(
-                  shape: MaterialStateProperty.all<OutlinedBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(0.0),
+      body: Padding(
+        padding: const EdgeInsets.all(30.0),
+        child: Center(
+          child: Column(
+            children: [
+              Text("What's your email?",
+                  style:
+                      TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold)),
+              TextField(
+                  controller: emailController,
+                  decoration: InputDecoration(
+                    labelText: 'Your email address',
+                    border: OutlineInputBorder(),
+                  )),
+              SizedBox(height: 15.0),
+              ElevatedButton(
+                style: ButtonStyle(
+                    shape: MaterialStateProperty.all<OutlinedBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(0.0),
+                      ),
                     ),
-                  ),
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.black),
-                  foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.white)),
-              onPressed: () {
-                String email = emailController.text;
-                UserProfile userProfile = UserProfile.updateEmail(email: email);
-                onUpdate(userProfile);
-                Navigator.pop(context);
-              },
-              child: Text("Update"),
-            ),
-          ],
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(Colors.black),
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.white)),
+                onPressed: () {
+                  String email = emailController.text;
+                  UserProfile userProfile =
+                      UserProfile.updateEmail(email: email);
+                  onUpdate(userProfile);
+                  Navigator.pop(context);
+                },
+                child: Text("Update"),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -417,39 +433,43 @@ class DescriptionPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Center(
-        child: Column(
-          children: [
-            Text("What type of passenger are you?",
-                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold)),
-            TextField(
-                controller: descriptionController,
-                decoration: InputDecoration(
-                  labelText: 'Write a little bit about yourself',
-                  border: OutlineInputBorder(),
-                )),
-            SizedBox(height: 15.0),
-            ElevatedButton(
-              style: ButtonStyle(
-                  shape: MaterialStateProperty.all<OutlinedBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(0.0),
+      body: Padding(
+        padding: const EdgeInsets.all(30.0),
+        child: Center(
+          child: Column(
+            children: [
+              Text("What type of passenger are you?",
+                  style:
+                      TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold)),
+              TextField(
+                  controller: descriptionController,
+                  decoration: InputDecoration(
+                    labelText: 'Write a little bit about yourself',
+                    border: OutlineInputBorder(),
+                  )),
+              SizedBox(height: 15.0),
+              ElevatedButton(
+                style: ButtonStyle(
+                    shape: MaterialStateProperty.all<OutlinedBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(0.0),
+                      ),
                     ),
-                  ),
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.black),
-                  foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.white)),
-              onPressed: () {
-                String description = descriptionController.text;
-                UserProfile userProfile =
-                    UserProfile.updateDescription(description: description);
-                onUpdate(userProfile);
-                Navigator.pop(context);
-              },
-              child: Text("Update"),
-            ),
-          ],
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(Colors.black),
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.white)),
+                onPressed: () {
+                  String description = descriptionController.text;
+                  UserProfile userProfile =
+                      UserProfile.updateDescription(description: description);
+                  onUpdate(userProfile);
+                  Navigator.pop(context);
+                },
+                child: Text("Update"),
+              ),
+            ],
+          ),
         ),
       ),
     );
