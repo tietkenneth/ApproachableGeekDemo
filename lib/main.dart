@@ -149,13 +149,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     style: TextStyle(
                       fontSize: 25.0,
                     )),
-                SizedBox(height: 25.0),
-                Text("[profile picture here]"),
-                SizedBox(height: 25.0),
+                const SizedBox(height: 25.0),
+                const Text("[profile picture here]"),
+                const SizedBox(height: 25.0),
                 TextFormField(
                     controller: firstNameController,
                     readOnly: true,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: "Name",
                     ),
                     onTap: () {
@@ -176,7 +176,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 TextFormField(
                   controller: phoneNumberController,
                   readOnly: true,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: "Phone",
                   ),
                   onTap: () {
@@ -193,7 +193,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 TextFormField(
                     controller: emailController,
                     readOnly: true,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: "Email",
                     ),
                     onTap: () {
@@ -209,8 +209,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 TextFormField(
                     controller: descriptionController,
                     readOnly: true,
-                    decoration:
-                        InputDecoration(labelText: "Tell Us About Yourself"),
+                    decoration: const InputDecoration(
+                        labelText: "Tell Us About Yourself"),
                     onTap: () {
                       Navigator.push(
                         context,
@@ -245,7 +245,7 @@ class NamePage extends StatelessWidget {
   final TextEditingController firstNameController;
   final TextEditingController lastNameController;
 
-  NamePage(
+  const NamePage(
       {required this.onUpdate,
       required this.firstNameController,
       required this.lastNameController});
@@ -307,7 +307,7 @@ class NamePage extends StatelessWidget {
                   onUpdate(userProfile);
                   Navigator.pop(context);
                 },
-                child: Text("Update"),
+                child: const Text("Update"),
               ),
             ],
           ),
@@ -321,7 +321,8 @@ class PhonePage extends StatelessWidget {
   final Function(UserProfile) onUpdate;
   final TextEditingController phoneNumberController;
 
-  PhonePage({required this.onUpdate, required this.phoneNumberController});
+  const PhonePage(
+      {required this.onUpdate, required this.phoneNumberController});
 
   @override
   Widget build(BuildContext context) {
@@ -332,16 +333,16 @@ class PhonePage extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
-              Text("What's your phone number?",
+              const Text("What's your phone number?",
                   style:
                       TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold)),
               TextField(
                   controller: phoneNumberController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Your Phone Number',
                     border: OutlineInputBorder(),
                   )),
-              SizedBox(height: 15.0),
+              const SizedBox(height: 15.0),
               ElevatedButton(
                 style: ButtonStyle(
                     shape: MaterialStateProperty.all<OutlinedBorder>(
@@ -360,7 +361,7 @@ class PhonePage extends StatelessWidget {
                   onUpdate(userProfile);
                   Navigator.pop(context);
                 },
-                child: Text("Update"),
+                child: const Text("Update"),
               ),
             ],
           ),
@@ -373,7 +374,7 @@ class PhonePage extends StatelessWidget {
 class EmailPage extends StatelessWidget {
   final Function(UserProfile) onUpdate;
   final TextEditingController emailController;
-  EmailPage({required this.onUpdate, required this.emailController});
+  const EmailPage({required this.onUpdate, required this.emailController});
 
   @override
   Widget build(BuildContext context) {
@@ -384,16 +385,16 @@ class EmailPage extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
-              Text("What's your email?",
+              const Text("What's your email?",
                   style:
                       TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold)),
               TextField(
                   controller: emailController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Your email address',
                     border: OutlineInputBorder(),
                   )),
-              SizedBox(height: 15.0),
+              const SizedBox(height: 15.0),
               ElevatedButton(
                 style: ButtonStyle(
                     shape: MaterialStateProperty.all<OutlinedBorder>(
@@ -412,7 +413,7 @@ class EmailPage extends StatelessWidget {
                   onUpdate(userProfile);
                   Navigator.pop(context);
                 },
-                child: Text("Update"),
+                child: const Text("Update"),
               ),
             ],
           ),
@@ -426,7 +427,7 @@ class DescriptionPage extends StatelessWidget {
   final Function(UserProfile) onUpdate;
   final TextEditingController descriptionController;
 
-  DescriptionPage(
+  const DescriptionPage(
       {required this.onUpdate, required this.descriptionController});
 
   @override
@@ -438,16 +439,16 @@ class DescriptionPage extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
-              Text("What type of passenger are you?",
+              const Text("What type of passenger are you?",
                   style:
                       TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold)),
               TextField(
                   controller: descriptionController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Write a little bit about yourself',
                     border: OutlineInputBorder(),
                   )),
-              SizedBox(height: 15.0),
+              const SizedBox(height: 15.0),
               ElevatedButton(
                 style: ButtonStyle(
                     shape: MaterialStateProperty.all<OutlinedBorder>(
@@ -466,7 +467,7 @@ class DescriptionPage extends StatelessWidget {
                   onUpdate(userProfile);
                   Navigator.pop(context);
                 },
-                child: Text("Update"),
+                child: const Text("Update"),
               ),
             ],
           ),
