@@ -2,11 +2,7 @@
 
 This Flutter project was developed on MacOS and tested for MacOS (Desktop app) and iOS.
 
-![Screenshot 2023-12-04 at 2 52 06 PM](https://github.com/tietkenneth/ApproachableGeekDemo/assets/65835355/c99ea6eb-1964-4a68-ab04-4506afa0ab03)
-
-![Alt text](image.png)
-
-![Alt text](image-1.png)
+<img width="377" alt="image" src="https://github.com/tietkenneth/ApproachableGeekDemo/assets/65835355/c49cf96f-dab2-4e0f-bbee-054a010c77ad">
 
 ## Time Invested
 
