@@ -6,6 +6,8 @@ This Flutter project was developed on MacOS and tested for MacOS (Desktop app) a
 
 ![Alt text](image.png)
 
+![Alt text](image-1.png)
+
 ## Time Invested
 
 - **Learning Flutter:**
